@@ -46,6 +46,24 @@ class NotificationPlugin {
     );
   }
 
+  Future<void> showDailyAtTime(Time time, int id, String title, String description) async{
+    var time = new Time(10, 0, 0);
+    var androidPlatformChannelSpecifics = new AndroidNotificationDetails('repeatDailyAtTime channel id',
+        'repeatDailyAtTime channel name', 'repeatDailyAtTime description');
+    var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
+    var platformChannelSpecifics = new NotificationDetails(
+        androidPlatformChannelSpecifics,
+        iOSPlatformChannelSpecifics
+    );
+    await _flutterLocalNotificationsPlugin.showDailyAtTime(
+        id,
+        title,
+        description,
+        time,
+        platformChannelSpecifics
+    );
+  }
+
   Future<List<PendingNotificationRequest>> getScheduledNotifications() async{
     final pendingNotifications = await _flutterLocalNotificationsPlugin.pendingNotificationRequests();
     return pendingNotifications;
