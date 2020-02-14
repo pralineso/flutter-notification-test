@@ -69,7 +69,7 @@ class NotificationPlugin {
     return pendingNotifications;
   }
 
-  Future canceNotification(int id) async{
+  Future cancelNotification(int id) async{
     await _flutterLocalNotificationsPlugin.cancel(id);
   }
 }
