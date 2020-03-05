@@ -102,9 +102,13 @@ class _CreateNotificationPageState extends State<CreateNotificationPage> {
   void createNotification(){
     final title = _titleController.text;
     final description = _descriptionController.text;
-    final time = Time(selectedTime.hour, selectedTime.minute);
+    final time = Time(selectedTime.hour, selectedTime.minute, 0);
+
+    print("dentro do create_notificatio_page time= "+ time.hour.toString());
 
     final notificationData = NotificationData(title, description, time);
+
+    print("dentro do create notification");
     Navigator.of(context).pop(notificationData);
   }
 

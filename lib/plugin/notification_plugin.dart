@@ -15,7 +15,8 @@ class NotificationPlugin {
     var initializationSettings = new InitializationSettings(initializationSettingsAndroid, initializationSettingsIOS);
     _flutterLocalNotificationsPlugin.initialize(
         initializationSettings,
-        onSelectNotification: onSelectNotification
+      onSelectNotification: onSelectNotification
+
     );
   }
 
@@ -23,6 +24,7 @@ class NotificationPlugin {
     if (payload != null){
       print('notification payload: '+payload);
     }
+    print('entrou aki no onselect notification');
   }
 
   Future<void> showWeeKlyAtDayAndTime(Time time, Day day, int id, String title, String description) async{
@@ -47,7 +49,6 @@ class NotificationPlugin {
   }
 
   Future<void> showDailyAtTime(Time time, int id, String title, String description) async{
-    var time = new Time(10, 0, 0);
     var androidPlatformChannelSpecifics = new AndroidNotificationDetails('repeatDailyAtTime channel id',
         'repeatDailyAtTime channel name', 'repeatDailyAtTime description');
     var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
@@ -66,6 +67,7 @@ class NotificationPlugin {
 
   Future<List<PendingNotificationRequest>> getScheduledNotifications() async{
     final pendingNotifications = await _flutterLocalNotificationsPlugin.pendingNotificationRequests();
+    print("entrou no getSchedule");
     return pendingNotifications;
   }
 

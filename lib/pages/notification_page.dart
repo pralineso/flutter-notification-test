@@ -100,21 +100,30 @@ class _NotificationPageState extends State<NotificationPage> {
         )
     );
     if (notificationData != null){
-      final notificationList = await _notificationPlugin.getScheduledNotifications();
+      print("dentro do if notificationdata != null");
+//      final notificationList = await _notificationPlugin.getScheduledNotifications();
 
 //      for (var i = 0; i < 100; i++){
+//        _notificationPlugin.showDailyAtTime(time, id, title, description)
 //        bool exists = _notificationPlugin.checkIfIdExists(notificationList, i);
 //        if(!exists){
 //          id = i;
 //        }
 //      }
     }
+
+    print("notificationData.time: "+ notificationData.time.toString());
+    print("notificationData.title: "+ notificationData.title);
+    print("notificationData.descricao: "+ notificationData.description);
+
     await _notificationPlugin.showDailyAtTime(
         notificationData.time,
         id,
         notificationData.title,
         notificationData.description
     );
+
+    print("antes do refreshnotification");
      refreshNotification();
   }
 
