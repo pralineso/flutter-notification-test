@@ -31,7 +31,9 @@ class _NotificationEspState extends State<NotificationEsp> {
             Container(
               child: Text('teste'),
             ),
-            FlatButton(onPressed: setupNotificationPlugin, child: Icon(Icons.access_alarm))
+            FlatButton(onPressed:(){
+              setupNotificationPlugin();
+            }, child: Icon(Icons.access_alarm))
           ],
         ),
       ),
@@ -50,9 +52,11 @@ class _NotificationEspState extends State<NotificationEsp> {
 
     flutterLocalNotificationsPlugin.initialize(
         initializationSettings,
+//        onSelectNotification: onSelectNotification
         onSelectNotification: onSelectNotification).then((init) {
           setupNotification();
-    });
+    }
+    );
   }
 
   Future onSelectNotification(String payload) async {
@@ -63,10 +67,11 @@ class _NotificationEspState extends State<NotificationEsp> {
       context,
       MaterialPageRoute(builder: (context) => NotificationEsp()),
     );
+//    print('entrou aki no onselect notification');
   }
 
   void setupNotification() async {
-    var time = Time(20, 0, 0);
+    var time = Time(20, 0, 58);
     var androidPlatformChannelSpecifics = AndroidNotificationDetails(
         'daily-notification',
         'Daily Notifications',
